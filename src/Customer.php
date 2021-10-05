@@ -2,16 +2,13 @@
 
 namespace Jit\Fleetrunnr;
 
+use GuzzleHttp\Client;
+
 class Customer
 {
     use MakeHttpRequests;
 
-    /**
-     * The Guzzle HTTP Client instance.
-     *
-     * @var \GuzzleHttp\Client
-     */
-    public $guzzle;
+    public Client $guzzle;
 
     public function setGuzzle($guzzle): void
     {
