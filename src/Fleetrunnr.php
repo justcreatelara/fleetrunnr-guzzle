@@ -6,36 +6,27 @@ use GuzzleHttp\Client as HttpClient;
 
 class Fleetrunnr
 {
-    protected string $apiKey;
-    protected string $workspace;
+    const URI_BASE = 'http://';
+    const URI_LAT =  '.api.test/api/rest/';
+
     public HttpClient $guzzle;
 
-    public function __construct(string $apiKey = null, $workspace = null, HttpClient $guzzle = null)
+    public function __construct(string $apiKey, $workspace)
     {
-        if ($apiKey !== null) {
-            $this->setApiKey($apiKey, $workspace, $guzzle);
-        }
-
-        if ($guzzle !== null) {
-            $this->guzzle = $guzzle;
-        }
+        $this->setApiKey($apiKey, $workspace);
     }
 
-    public function setApiKey($apiKey, $workspace, HttpClient $guzzle = null)
+    private function setApiKey($apiKey, $workspace)
     {
-        $this->apiKey = $apiKey;
-        $this->workspace = $workspace;
-
-        $this->guzzle = $guzzle ?: new HttpClient([
-            'base_uri' => 'http://'.$this->workspace.'.api.test/api/rest/',
+        $this->guzzle = new HttpClient([
+            'base_uri' => self::URI_BASE .$workspace. self::URI_LAT,
             'http_errors' => false,
             'headers' => [
-                'Authorization' => 'Bearer '.$this->apiKey,
+                'Authorization' => 'Bearer '.$apiKey,
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
             ],
         ]);
-
         return $this;
     }
 }

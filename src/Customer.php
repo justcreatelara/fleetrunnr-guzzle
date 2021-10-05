@@ -2,18 +2,9 @@
 
 namespace Jit\Fleetrunnr;
 
-use GuzzleHttp\Client;
-
-class Customer
+class Customer extends AbstractServiceFactory
 {
     use MakeHttpRequests;
-
-    public Client $guzzle;
-
-    public function setGuzzle($guzzle): void
-    {
-        $this->guzzle = $guzzle;
-    }
 
     public function list()
     {
