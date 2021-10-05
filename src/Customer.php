@@ -2,11 +2,16 @@
 
 namespace Jit\Fleetrunnr;
 
-use Illuminate\Support\Facades\Http;
-
 class Customer
 {
     use MakeHttpRequests;
+
+    /**
+     * The Guzzle HTTP Client instance.
+     *
+     * @var \GuzzleHttp\Client
+     */
+    public $guzzle;
 
     public function setGuzzle($guzzle): void
     {
@@ -25,11 +30,11 @@ class Customer
 
     public function update($id, $params = null)
     {
-        return $this->request('put', 'customers', $params);
+        return $this->request('put', 'customers/'. $id, $params);
     }
 
     public function delete($id)
     {
-        return $this->request('delete', 'customers/$id');
+        return $this->request('delete', 'customers/'. $id);
     }
 }

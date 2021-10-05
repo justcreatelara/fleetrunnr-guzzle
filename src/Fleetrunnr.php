@@ -11,14 +11,21 @@ class Fleetrunnr
      *
      * @var string
      */
-    protected $apiKey;
+    protected string $apiKey;
+
+    /**
+     * The Account Workspace.
+     *
+     * @var string
+     */
+    protected string $workspace;
 
     /**
      * The Guzzle HTTP Client instance.
      *
      * @var \GuzzleHttp\Client
      */
-    public $guzzle;
+    public HttpClient $guzzle;
 
     /**
      * Create a new Fleetrunnr instance.
@@ -27,10 +34,10 @@ class Fleetrunnr
      * @param  \GuzzleHttp\Client|null  $guzzle
      * @return void
      */
-    public function __construct($apiKey = null, HttpClient $guzzle = null)
+    public function __construct($apiKey = null, $workspace = null, HttpClient $guzzle = null, )
     {
         if (! is_null($apiKey)) {
-            $this->setApiKey($apiKey, $guzzle);
+            $this->setApiKey($apiKey, $workspace, $guzzle);
         }
 
         if (! is_null($guzzle)) {
@@ -45,12 +52,13 @@ class Fleetrunnr
      * @param  \GuzzleHttp\Client|null  $guzzle
      * @return $this
      */
-    public function setApiKey($apiKey, $guzzle = null)
+    public function setApiKey($apiKey, $workspace, $guzzle = null)
     {
         $this->apiKey = $apiKey;
+        $this->workspace = $workspace;
 
         $this->guzzle = $guzzle ?: new HttpClient([
-            'base_uri' => 'https://fleetrunnr.com/api/rest/',
+            'base_uri' => 'http://'.$this->workspace.'.api.test/api/rest/',
             'http_errors' => false,
             'headers' => [
                 'Authorization' => 'Bearer '.$this->apiKey,
@@ -60,6 +68,5 @@ class Fleetrunnr
         ]);
 
         return $this;
-
     }
 }

@@ -5,7 +5,6 @@ namespace Jit\Fleetrunnr;
  * Service factory class for API resources in the root namespace.
  *
  * @property Customer $customers
- * @property Location $locations
  */
 
 class ServiceFactory
@@ -14,8 +13,7 @@ class ServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'customers' => Customer::class,
-        'locations' => Location::class,
+        'customers' => Customer::class
     ];
 
     public function getServiceClass($name)

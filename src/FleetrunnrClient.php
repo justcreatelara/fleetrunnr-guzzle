@@ -12,8 +12,7 @@ class FleetrunnrClient extends Fleetrunnr
     /**
      * Client used to send requests to FleetRunnr's API.
      *
-     * @property \Jit\Fleetrunnr\Customer $customers
-     * @property \Jit\Fleetrunnr\Location $locations
+     * @property Customer $customers
      */
     public function __get($name)
     {
@@ -22,6 +21,7 @@ class FleetrunnrClient extends Fleetrunnr
         }
 
         $object = $this->ServiceFactory->getServiceClass($name);
+
         $object->setGuzzle($this->guzzle);
         return $object;
     }
