@@ -23,6 +23,7 @@
       "ext-json": "*"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "nunomaduro/collision": "^5.3",
         "orchestra/testbench": "^6.15",
         "pestphp/pest": "^1.18",
@@ -32,8 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Jit\\Fleetrunnr\\": "src",
-            "Jit\\Fleetrunnr\\Database\\Factories\\": "database/factories"
+            "Jit\\Fleetrunnr\\": "src"
         }
     },
     "autoload-dev": {

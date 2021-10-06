@@ -32,8 +32,8 @@ class exampleTest extends TestCase
         $data = [
               'first_name' => 'aqq',
               'last_name' => 'qqq',
-              'phone' => '9613442333',
-              'email' => 'aaasfgft@zfdfdfan.iafo',
+              'phone' => '9613442133',
+              'email' => 'aaast@zfdfdfan.iafo',
               'notes' => 'Rem ut aliid quasi'
         ];
 
@@ -64,7 +64,7 @@ class exampleTest extends TestCase
     public function a_user_can_delete_a_customer()
     {
         $client = new FleetrunnrClient('6|Jl0V7whsu8F8rs20QK0jnORITLIWhM0maIzqWIJy', 'erdman-plc1633343483');
-        $customer = $client->customers->delete(13);
+        $customer = $client->customers->delete(15);
         self::assertCount(0, $customer['data']);
     }
 }

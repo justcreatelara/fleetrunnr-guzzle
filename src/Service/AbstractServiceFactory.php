@@ -1,6 +1,6 @@
 <?php
 
-namespace Jit\Fleetrunnr;
+namespace Jit\Fleetrunnr\Service;
 
 use Exception;
 use Jit\Fleetrunnr\Exceptions\FailedActionException;
@@ -8,8 +8,13 @@ use Jit\Fleetrunnr\Exceptions\NotFoundException;
 use Jit\Fleetrunnr\Exceptions\ValidationException;
 use Psr\Http\Message\ResponseInterface;
 
-trait MakeHttpRequests
+abstract class AbstractServiceFactory
 {
+    public function setGuzzle($guzzle)
+    {
+        $this->guzzle = $guzzle;
+    }
+
     protected function request($verb, $uri, array $payload = [])
     {
         $response = $this->guzzle->request($verb, $uri,
@@ -19,7 +24,7 @@ trait MakeHttpRequests
         $statusCode = $response->getStatusCode();
 
         if ($statusCode < 200 || $statusCode > 299) {
-             $this->handleRequestError($response);
+            $this->handleRequestError($response);
         }
 
         $responseBody = (string) $response->getBody();

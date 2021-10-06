@@ -1,6 +1,6 @@
 <?php
 
-namespace Jit\Fleetrunnr;
+namespace Jit\Fleetrunnr\Service;
 
 class ServiceFactory
 {

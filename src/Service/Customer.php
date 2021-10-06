@@ -1,11 +1,9 @@
 <?php
 
-namespace Jit\Fleetrunnr;
+namespace Jit\Fleetrunnr\Service;
 
 class Customer extends AbstractServiceFactory
 {
-    use MakeHttpRequests;
-
     public function list()
     {
         return $this->request('get', 'customers');

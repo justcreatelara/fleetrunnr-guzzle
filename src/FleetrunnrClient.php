@@ -2,6 +2,12 @@
 
 namespace Jit\Fleetrunnr;
 
+use Jit\Fleetrunnr\Service\ServiceFactory;
+
+/**
+ * @property \Jit\Fleetrunnr\Service\Customer customers
+ */
+
 class FleetrunnrClient extends Fleetrunnr
 {
     private $ServiceFactory;

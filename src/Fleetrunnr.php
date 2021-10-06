@@ -2,14 +2,14 @@
 
 namespace Jit\Fleetrunnr;
 
-use GuzzleHttp\Client as HttpClient;
+use GuzzleHttp\Client;
 
 class Fleetrunnr
 {
     const URI_BASE = 'http://';
     const URI_LAT =  '.api.test/api/rest/';
 
-    public HttpClient $guzzle;
+    public Client $guzzle;
 
     public function __construct(string $apiKey, $workspace)
     {
@@ -18,7 +18,7 @@ class Fleetrunnr
 
     private function setApiKey($apiKey, $workspace)
     {
-        $this->guzzle = new HttpClient([
+        $this->guzzle = new Client([
             'base_uri' => self::URI_BASE .$workspace. self::URI_LAT,
             'http_errors' => false,
             'headers' => [
